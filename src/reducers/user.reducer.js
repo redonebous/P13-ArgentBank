@@ -1,10 +1,10 @@
 const initialState = {};
 
 export default function userReducer(state = initialState, action) {
+
     switch (action.type) {
         case 'LOGIN_USER':
             localStorage.setItem('tokenAccess', action.payload.body.token)
-            console.log(localStorage)
             return { ...action.payload.body };
         case 'GET_USER':
             return { ...state, ...action.payload.body };

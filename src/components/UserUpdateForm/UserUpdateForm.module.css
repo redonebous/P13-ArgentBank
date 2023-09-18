@@ -1,0 +1,17 @@
+.updateForm {}
+
+.updateForm div input {
+    width: 200px;
+    height: 30px;
+    margin: 0px 10px;
+}
+
+.updateForm div button {
+    width: 90px;
+    height: 30px;
+    margin: 10px;
+    background-color: white;
+    border: 1px #00bc77 solid;
+    color: #00bc77;
+    cursor: pointer;
+}

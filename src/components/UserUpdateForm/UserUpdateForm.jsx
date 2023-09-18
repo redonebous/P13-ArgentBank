@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../../actions/user.action'
+import styles from './UserUpdateForm.module.css'
 
 export default function UserUpdateForm({ setUpdate }) {
 
@@ -27,7 +28,7 @@ export default function UserUpdateForm({ setUpdate }) {
     }
 
     return (
-        <form ref={updateForm} id='updateForm' onSubmit={(e) => handleUpdateForm(e)}>
+        <form ref={updateForm} className={styles.updateForm} id='updateForm' onSubmit={(e) => handleUpdateForm(e)}>
             <div>
                 <input type="text" id="firstname" placeholder={user.firstName} />
                 <input type="text" id="lastname" placeholder={user.lastName} />

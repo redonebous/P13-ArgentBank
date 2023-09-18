@@ -5,6 +5,7 @@ export const GET_USER = 'GET_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const RELOG_USER = 'RELOG_USER';
 export const UPDATE_USER = 'UPDATE_USER';
+export const FAIL_RELOG = 'FAIL_RELOG';
 
 
 export const loginUser = (data) => {
@@ -17,9 +18,13 @@ export const loginUser = (data) => {
 
 export const relogUser = (token) => {
     return (dispatch) => {
+
         return axios.post('http://localhost:3001/api/v1/user/profile', null, { headers: { Authorization: 'Bearer ' + token } }).then((res) => {
             dispatch({ type: 'RELOG_USER', payload: res.data })
+        }).catch((err) => {
+            return dispatch({ type: 'LOGOUT_USER', payload: true })
         })
+
     }
 }
 
