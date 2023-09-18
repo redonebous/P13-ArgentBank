@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Index from './pages/Index';
+import SignIn from './pages/SignIn';
+import User from './pages/User';
+import Navigation from './components/Navigation/Navigation';
+import Footer from './components/Footer/Footer';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser, relogUser } from './actions/user.action';
+
 
 function App() {
+
+  const dispatch = useDispatch()
+  const token = localStorage.getItem('tokenAccess')
+
+  if (token) {
+    dispatch(relogUser(token))
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation />
+      <Routes>
+        <Route path='/' element={<Index />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/user' element={<User />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
