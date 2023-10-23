@@ -11,7 +11,7 @@ export default function Navigation() {
     const navigate = useNavigate()
 
     const login = <Link className="main-nav-item" to="/signin"><i className="fa fa-user-circle"></i>Sign In</Link>
-    const logout = <span className='main-nav-item' onClick={(e) => handleLougout()}><i className="fa fa-user-circle"></i>Sign Out</span>
+    const logout = <Link className='main-nav-item' onClick={(e) => handleLougout()}><i className="fa fa-user-circle"></i> <span>{user.firstName}</span> <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Sign Out</span></Link>
 
     const handleLougout = (e) => {
         dispatch(logoutUser())

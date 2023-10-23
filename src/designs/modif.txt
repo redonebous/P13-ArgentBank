@@ -1,0 +1,2 @@
+- Modiffier le css pour coller aux maquettes
+- Modifier le swagger pour integrer les détails des transactions (img transaction)
