@@ -137,7 +137,7 @@ paths:
           description: No transactions found for this month
         "500":
           description: Internal Server Error
-  /transaction/id:
+  /transaction/{id}:
     get:
       security:
         - Bearer: []
@@ -151,12 +151,11 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-        - in: body
+        - in: path
           name: id
+          type: integer
           description: Id of transaction to display
           required: true
-          schema:
-            $ref: "#/definitions/Transaction"
       produces:
         - application/json
       responses:
@@ -180,6 +179,11 @@ paths:
           type: string
           name: Authorization
           description: Attach Bearer JWT token
+          required: true
+        - in: path
+          name: id
+          type: integer
+          description: Id of transaction to display
           required: true
         - in: body
           name: transaction
@@ -228,18 +232,6 @@ definitions:
         description: user password
   Transaction:
     properties:
-      date:
-        type: object
-        description: date of transaction
-      description:
-        type: string
-        description: giver or receiver
-      amount:
-        type: number
-        description: amount of this transaction
-      balance:
-        type: number
-        description: total amount in the acount
       type:
         type: string
         description: method of payment
@@ -266,8 +258,11 @@ definitions:
   TransactionResponse:
     type: object
     properties:
+      id:
+        type: integer
       date:
-        type: object
+        type: string
+        format: date-time
       description:
         type: string
       amount:
